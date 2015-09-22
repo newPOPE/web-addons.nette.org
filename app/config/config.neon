@@ -21,6 +21,10 @@ parameters:
 	ghClientSecret: null
 	gravatarMaxRating: pg
 
+	route:
+		secured: on
+
+
 nette:
 	application:
 		errorPresenter: 'Error'
@@ -47,7 +51,7 @@ services:
 	vendorRouteHelper: NetteAddons\Model\VendorRouteHelper
 
 	- NetteAddons\RouterFactory
-	router: @NetteAddons\RouterFactory::createRouter
+	router: @NetteAddons\RouterFactory::createRouter(%route.secured%)
 
 	# security
 	authenticator: NetteAddons\Model\Authenticator

@@ -23,13 +23,17 @@ class RouterFactory extends \Nette\Object
 		$this->vendorRouteHelper = $vendorRouteHelper;
 	}
 
-
-	/**
-	 * @return \Nette\Application\IRouter
-	 */
-	public function createRouter()
+  /**
+   * @param bool $isSecured
+   *
+   * @return \Nette\Application\IRouter
+   */
+	public function createRouter($isSecured = true)
 	{
-		Route::$defaultFlags = Route::SECURED;
+		if($isSecured) {
+			Route::$defaultFlags = Route::SECURED;
+		}
+
 		$router = new RouteList();
 
 		// CLI

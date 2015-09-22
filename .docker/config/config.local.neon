@@ -1,0 +1,15 @@
+# copy this file to config.local.neon
+
+parameters:
+	database:
+		driver: mysql
+		host: localhost
+		dbname: addons_nette_org
+		user: root
+		password: root
+
+	route:
+		secured: off
+
+services:
+	authenticator: NetteAddons\Model\NetteOrgAuthenticator('netteLoginApiPassword')
